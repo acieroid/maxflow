@@ -2,59 +2,59 @@
 
 Edge::Edge()
 {
-        setNode1(NULL);
-	setNode2(NULL);
-	setMaxCapacity(0);
-	setCapacity(0);
-	setCost(0);
+  setSource(NULL);
+  setDestination(NULL);
+  setMaxCapacity(0);
+  setCapacity(0);
+  setCost(0);
 }
 
-Node* Edge::getNode1()
+Node* Edge::getSource()
 {
-	return _node1;
+  return _source;
 }
 
-Node* Edge::getNode2()
+Node* Edge::getDestination()
 {
-	return _node2;
+  return _dest;
 }
 
 int Edge::getMaxCapacity()
 {
-	return _maxCapacity;
+  return _maxCapacity;
 }
 
 int Edge::getCapacity()
 {
-	return _capacity;
+  return _capacity;
 }
 
 int Edge::getCost()
 {
-	return _cost;
+  return _cost;
 }
 
-void Edge::setNode1(Node* node)
+void Edge::setSource(Node* node)
 {
-	_node1 = node;
+  _source = node;
 }
 
-void Edge::setNode2(Node* node)
+void Edge::setDestination(Node* node)
 {
-	_node2 = node;
+  _node2 = node;
 }
 
 void Edge::setMaxCapacity(unsigned int maxCapacity)
 {
-	_maxCapacity = maxCapacity;
+  _maxCapacity = maxCapacity;
 }
 
 void Edge::setCapacity(unsigned int capacity)
 {
-	_capacity = capacity;
+  _capacity = capacity;
 }
 
 void Edge::setCost(unsigned int cost)
 {
-	_cost = cost;
+  _cost = cost;
 }

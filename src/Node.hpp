@@ -9,24 +9,24 @@ class Edge;
 
 class Node
 {
-	private:
-		int _name;
-		int _potential;
-		std::vector<Edge*> _follow;
+private:
+  int _name;
+  int _potential;
+  std::vector<Edge*> _next;
 		
-	public:
-		Node();
-		Node(int name, int potential);
+public:
+  Node();
+  Node(int name, int potential);
 		
-		int getName();
-		int getPotential();
-		void setPotential(int potential);
-		void setName(int name);
+  int getName();
+  void setName(int name);
+  int getPotential();
+  void setPotential(int potential);
 		
-		void addFollow(Edge* edge);
-		Edge* getEdge(unsigned int i);
-		Edge* getEdgeFromNode(unsigned int name);
-		int followSize();
+  void addNext(Edge* edge);
+  Edge* getEdge(unsigned int i);
+  Edge* getEdgeFromNode(unsigned int name);
+  int nextSize();
 };
 
 #endif
