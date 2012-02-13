@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
+#include <QGraphicsView>
 #include "Context.hpp"
 
 /**
@@ -24,6 +25,7 @@ private:
 
   QPushButton *restart, *step;     /*< Boutons pour manipuler l'algorithme */
   QPushButton *newNode, *newEdge;  /*< Boutons pour manipuler le graphe */
+  QGraphicsView *view;             /*< Vue de l'aire de dessin */
   Context *context;                /*< Aire de dessin */
 };
 

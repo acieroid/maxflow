@@ -9,6 +9,7 @@ MainWidget::MainWidget()
   newNode = new QPushButton("New node");
   newEdge = new QPushButton("New edge");
   context = new Context();
+  view = new QGraphicsView(context);
 
   buttonsLayout->addWidget(restart);
   buttonsLayout->addWidget(step);
@@ -16,7 +17,7 @@ MainWidget::MainWidget()
   buttonsLayout->addWidget(newEdge);
 
   mainLayout->addLayout(buttonsLayout);
-  mainLayout->addWidget(context);
+  mainLayout->addWidget(view);
 
   this->setLayout(mainLayout);
   this->show();

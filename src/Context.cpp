@@ -2,20 +2,16 @@
 
 Context::Context()
 {
+  setBackgroundBrush(Qt::white);
+  graph = new Graph();
 }
 
 Context::~Context()
 {
+  delete graph;
 }
 
-void Context::paintEvent(QPaintEvent * /* event */)
+Graph *Context::getGraph()
 {
-  QPainter *painter = new QPainter(this);
-
-  /* fond blanc */
-  painter->setPen(QColor(255, 255, 255));
-  painter->setBrush(QColor(255, 255, 255));
-  painter->drawRect(0, 0, width(), height());
-
-  delete painter;
+  return graph;
 }
