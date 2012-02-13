@@ -41,7 +41,7 @@ void Edge::setSource(Node* node)
 
 void Edge::setDestination(Node* node)
 {
-  _node2 = node;
+  _dest = node;
 }
 
 void Edge::setMaxCapacity(unsigned int maxCapacity)

@@ -10,18 +10,18 @@ class Edge;
 class Node
 {
 private:
-  int _name;
-  int _potential;
+  unsigned int _name;
+  unsigned int _potential;
   std::vector<Edge*> _next;
 		
 public:
   Node();
-  Node(int name, int potential);
+  Node(unsigned int name, unsigned int potential);
 		
-  int getName();
-  void setName(int name);
-  int getPotential();
-  void setPotential(int potential);
+  unsigned int getName();
+  void setName(unsigned int name);
+  unsigned int getPotential();
+  void setPotential(unsigned int potential);
 		
   void addNext(Edge* edge);
   Edge* getEdge(unsigned int i);

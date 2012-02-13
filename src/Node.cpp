@@ -6,35 +6,35 @@ Node::Node()
   setPotential(0);
 }
 
-Node::Node(int name, int potential)
+Node::Node(unsigned int name, unsigned int potential)
 {
   setName(name);
   setPotential(potential);
 }
 
-int Node::getName()
+unsigned int Node::getName()
 {
   return _name;
 }
 
-int Node::getPotential()
+unsigned int Node::getPotential()
 {
   return _potential;
 }
 
-void Node::setName(int name)
+void Node::setName(unsigned int name)
 {
   _name = name;
 }
 
-void Node::setPotential(int potential)
+void Node::setPotential(unsigned int potential)
 {
   _potential = potential;
 }
 
 void Node::addNext(Edge* edge)
 {
-  _follow.push_back(edge);
+  _next.push_back(edge);
 }
 
 Edge* Node::getEdge(unsigned int i)
@@ -51,23 +51,15 @@ Edge* Node::getEdge(unsigned int i)
 
 Edge* Node::getEdgeFromNode(unsigned int name)
 {//sert à trouver le noeud suivant avec son nom
-  int size = nextSize();
-  int i = 0;
-  while(_next[i] != name && i < size)
-  {
-      ++i;
+  std::vector<Edge *>::iterator it;
+  for (it = _next.begin(); it != _next.end(); it++) {
+    if ((*it)->getDestination()->getName() == name)
+      return *(it++);
   }
-  if(i != size)
-  {
-    return _follow[i];
-  }
-  else
-  {
-    return NULL;
-  }
+  return NULL;
 }
 
-int Node::followSize()
+int Node::nextSize()
 {
-  return _follow.size();
+  return _next.size();
 }
