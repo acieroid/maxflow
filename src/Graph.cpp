@@ -4,17 +4,27 @@ Graph::Graph()
 {
 }
 
+Graph::~Graph()
+{
+  /* TODO: supprimer tous les noeuds et arcs */
+}
+
 void Graph::addNode(Node* node)
 {
-	_nodes.push_back(node);
+  _nodes.push_back(node);
 }
 
-Node* Graph::getSource()
-{//la source sera le premier noeud
-	return _nodes.front();
-}
-
-Node* Graph::getSink()
+std::vector<Node*> Graph::getNodes()
 {
-	return _nodes.back();
+  return _nodes;
+}
+
+std::vector<Node*> Graph::getSources()
+{
+  return _sources;
+}
+
+std::vector<Node*> Graph::getSinks()
+{
+  return _sinks;
 }
