@@ -2,5 +2,5 @@ TEMPLATE = app
 TARGET = maxflow
 DEPENDPATH += . src
 INCLUDEPATH += .
-HEADERS += src/MainWidget.h
-SOURCES += src/MainWidget.cpp src/main.cpp
+HEADERS += src/MainWidget.hpp src/Context.hpp
+SOURCES += src/main.cpp src/MainWidget.cpp src/Context.cpp

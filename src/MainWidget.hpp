@@ -1,7 +1,11 @@
-#ifndef MAINWIDGET_H
-#define MAINWIDGET_H
+#ifndef MAINWIDGET_HPP
+#define MAINWIDGET_HPP
 
 #include <QWidget>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include "Context.hpp"
 
 /**
  * Le widget principal, qui contient tous les autres
@@ -15,6 +19,12 @@ public:
   ~MainWidget();
 
 private:
+  QVBoxLayout *mainLayout;
+  QHBoxLayout *buttonsLayout;
+
+  QPushButton *restart, *step;     /*< Boutons pour manipuler l'algorithme */
+  QPushButton *newNode, *newEdge;  /*< Boutons pour manipuler le graphe */
+  Context *context;                /*< Aire de dessin */
 };
 
-#endif /* MAINWIDGET_H */
+#endif /* MAINWIDGET_HPP */
