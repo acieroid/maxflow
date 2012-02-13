@@ -1,6 +1,7 @@
 #ifndef _NODE_HPP
 #define _NODE_HPP
 
+#include <cstddef> /* NULL */
 #include <vector>
 
 #include "Edge.hpp"

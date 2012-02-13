@@ -2,11 +2,11 @@
 
 Edge::Edge()
 {
-	self setNode1(NULL);
-	self setNode2(NULL);
-	self setMaxCapacity(0);
-	self setCapacity(0);
-	self setCost(0);
+        setNode1(NULL);
+	setNode2(NULL);
+	setMaxCapacity(0);
+	setCapacity(0);
+	setCost(0);
 }
 
 Node* Edge::getNode1()

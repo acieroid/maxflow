@@ -2,14 +2,14 @@
 
 Node::Node()
 {
-	self setName(-1);
-	self setPotential(0);
+	setName(-1);
+	setPotential(0);
 }
 
 Node::Node(int name, int potential)
 {
-	self setName(name);
-	self setPotential(potential);
+	setName(name);
+	setPotential(potential);
 }
 
 int Node::getName()
@@ -51,8 +51,9 @@ Edge* Node::getEdge(unsigned int i)
 
 Edge* Node::getEdgeFromNode(unsigned int name)
 {//sert à trouver le noeud suivant avec son nom
-	int size = self followSize();
+	int size = followSize();
 	int i = 0;
+#if 0 /* FIX */
 	while(_follow[i] != name && i < size)
 	{
 		++i;
@@ -62,6 +63,7 @@ Edge* Node::getEdgeFromNode(unsigned int name)
 		return _follow[i];
 	}
 	else
+#endif
 	{
 		return NULL;
 	}
