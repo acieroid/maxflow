@@ -38,11 +38,12 @@ public:
   NodeType getType();
   void setType(NodeType type);
 
+  int type();
 private:
   unsigned int _name;
   unsigned int _potential;
-  std::vector<Edge*> _next;
   NodeType _type;
+  std::vector<Edge*> _next;
 };
 
 #endif

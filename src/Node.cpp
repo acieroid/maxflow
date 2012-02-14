@@ -52,14 +52,9 @@ void Node::addNext(Edge* edge)
 
 Edge* Node::getEdge(unsigned int i)
 {//acces au noeud suivant i
-	if(i < _next.size())
-	{
-		return _next[i];
-	}
-	else
-	{
-		return NULL;
-	}
+  if(i < _next.size())
+    return _next[i];
+  return NULL;
 }
 
 Edge* Node::getEdgeFromNode(unsigned int name)
@@ -98,4 +93,9 @@ void Node::setType(NodeType type)
   default:
     ;
   }
+}
+
+int Node::type()
+{
+  return Type;
 }

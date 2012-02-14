@@ -1,4 +1,5 @@
 #include "Context.hpp"
+#include <iostream>
 
 Context::Context() :
   line(NULL)
@@ -87,10 +88,11 @@ void Context::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
     if (startItems.count() > 0 && endItems.count() > 0 &&
         startItems.first() != endItems.first()) {
-      Node *start = qgraphicsitem_cast<Node *>(startItems.first());
-      Node *end = qgraphicsitem_cast<Node *>(endItems.first());
+      Node *start = (Node *)(startItems.first());
+      Node *end = (Node *)(endItems.first());
       Edge *edge = new Edge(start, end);
       start->addNext(edge);
+      addItem(edge);
     }
   }
   setMode(MOVE_NODE);

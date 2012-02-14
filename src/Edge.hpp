@@ -26,21 +26,13 @@ public:
   void setCapacity(unsigned int capacity);
   void setCost(unsigned int cost);
 
-#if 0
-protected:
-  void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-             QWidget *widget = NULL);
-#endif
+  int type();
 private:
   Node* _source;
   Node* _dest;
   unsigned int _maxCapacity;
   unsigned int _capacity;
   unsigned int _cost;
-
-#if 0
-  QPolygonF headPolygon;
-#endif
 };
 
 #endif
