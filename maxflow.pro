@@ -1,3 +1,4 @@
+CONFIG += qt debug
 TEMPLATE = app
 TARGET = maxflow
 DEPENDPATH += . src
