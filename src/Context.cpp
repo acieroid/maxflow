@@ -50,13 +50,7 @@ void Context::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
   QGraphicsRectItem *item;
   if (mode == INSERT_NODE || mode == INSERT_SOURCE || mode == INSERT_SINK) {
-    item = new QGraphicsRectItem(0, 0, 100, 20);
-    if (mode == INSERT_NODE)
-      item->setBrush(NODE_COLOR);
-    else if (mode == INSERT_SOURCE)
-      item->setBrush(SOURCE_COLOR);
-    else if (mode == INSERT_SINK)
-      item->setBrush(SINK_COLOR);
+    item = new Node((Node::NodeType) mode); /* mode correspond à un NodeType dans ce cas-ci */
     addItem(item);
     item->setPos(mouseEvent->scenePos());
   }

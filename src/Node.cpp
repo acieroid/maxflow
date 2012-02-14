@@ -1,15 +1,28 @@
 #include "Node.hpp"
 
-Node::Node()
+Node::Node() :
+  QGraphicsRectItem(0, 0, NODE_WIDTH, NODE_HEIGHT)
 {
   setName(-1);
   setPotential(0);
+  setType(NODE);
 }
 
-Node::Node(unsigned int name, unsigned int potential)
+Node::Node(NodeType type) :
+  QGraphicsRectItem(0, 0, NODE_WIDTH, NODE_HEIGHT)
+{
+  setName(-1);
+  setPotential(0);
+  setType(type);
+}
+
+Node::Node(unsigned int name, unsigned int potential, NodeType type) :
+  QGraphicsRectItem(0, 0, NODE_WIDTH, NODE_HEIGHT)
 {
   setName(name);
   setPotential(potential);
+  setType(type);
+  QGraphicsRectItem(0, 0, 100, 20);
 }
 
 unsigned int Node::getName()
@@ -62,4 +75,27 @@ Edge* Node::getEdgeFromNode(unsigned int name)
 int Node::nextSize()
 {
   return _next.size();
+}
+
+Node::NodeType Node::getType()
+{
+  return _type;
+}
+
+void Node::setType(NodeType type)
+{
+  _type = type;
+  switch (type) {
+  case NODE:
+    setBrush(QBrush(NODE_COLOR));
+    break;
+  case SOURCE:
+    setBrush(QBrush(SOURCE_COLOR));
+    break;
+  case SINK:
+    setBrush(QBrush(SINK_COLOR));
+    break;
+  default:
+    ;
+  }
 }

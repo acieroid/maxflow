@@ -4,12 +4,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsRectItem>
-#include <QColor>
 #include "Graph.hpp"
-
-static const QColor NODE_COLOR = Qt::white;
-static const QColor SOURCE_COLOR = Qt::green;
-static const QColor SINK_COLOR = Qt::red;
 
 /**
  * Le widget sur lequel on dessine
