@@ -18,7 +18,7 @@ static const int NODE_HEIGHT = 25;
 class Node : public QGraphicsRectItem
 {
 public:
-  enum { Type = UserType + 15 };
+  enum { Type = UserType + 1 };
   enum NodeType { NODE, SOURCE, SINK };
 
   Node();

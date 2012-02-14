@@ -9,15 +9,11 @@ class Graph
 {
 private:
   std::vector<Node*> _nodes;
-  std::vector<Node*> _sources;
-  std::vector<Node*> _sinks;
 public:
   Graph();
   ~Graph();
 		
-  void addNode(Node* node);
-  void addSource(Node *node);
-  void addSink(Node *node);
+  void addNode(Node *node);
   std::vector<Node*> getNodes();
   std::vector<Node*> getSources();
   std::vector<Node*> getSinks();

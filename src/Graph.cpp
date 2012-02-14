@@ -6,7 +6,13 @@ Graph::Graph()
 
 Graph::~Graph()
 {
-  /* TODO: supprimer tous les noeuds et arcs */
+  std::vector<Node *>::iterator it;
+  Node *node;
+
+  while (_nodes.begin() != _nodes.end()) {
+    node = _nodes.pop_back();
+    delete node;
+  }
 }
 
 void Graph::addNode(Node* node)
@@ -21,10 +27,26 @@ std::vector<Node*> Graph::getNodes()
 
 std::vector<Node*> Graph::getSources()
 {
-  return _sources;
+  std::vector<Node *> sources;
+  std::vector<Node *>::iterator it;
+
+  for (it = _nodes.begin(); it != _nodes.end(); it++) {
+    if ((*it)->getType = SOURCE)
+      sources.push_back(*it);
+  }
+
+  return sources;
 }
 
 std::vector<Node*> Graph::getSinks()
 {
-  return _sinks;
+  std::vector<Node *> sinks;
+  std::vector<Node *>::iterator it;
+
+  for (it = _nodes.begin(); it != _nodes.end(); it++) {
+    if ((*it)->getType = SINK)
+      sinks.push_back(*it);
+  }
+
+  return sinks;
 }
