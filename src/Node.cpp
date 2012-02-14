@@ -1,9 +1,11 @@
 #include "Node.hpp"
 
 Node::Node(NodeType type) :
-  QGraphicsRectItem(-NODE_WIDTH/2, -NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT),
-  _name(-1), _potential(0), _type(type)
+  QGraphicsRectItem(-NODE_WIDTH/2, -NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT)
 {
+  setName(-1);
+  setType(type);
+  setPotential(0);
   setFlag(QGraphicsItem::ItemIsMovable, true);
   setAcceptDrops(true);
 }
@@ -102,4 +104,21 @@ void Node::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     (*it)->update();
 
   QGraphicsItem::mouseMoveEvent(event);
+}
+
+/**
+ * TODO: la méthode n'a pas l'air d'être appelée...
+ */
+void Node::paint(QPainter *painter, QStyleOptionGraphicsItem *option,
+                 QWidget *widget)
+{
+  /* Dessine le noeud */
+  /* QGraphicsRectItem::paint(painter, option, widget); */
+  painter->drawRect(rect());
+
+  /* Ajoute le nom par dessus */
+  QFontMetrics fontMetrics(painter->font());
+  QString name = QString("%1").arg(getName());
+  painter->drawText(NODE_WIDTH/2-fontMetrics.width(name),
+                    NODE_HEIGHT/2-fontMetrics.width(name), name);
 }

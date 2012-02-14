@@ -1,7 +1,8 @@
 #ifndef _NODE_HPP
 #define _NODE_HPP
 
-#include <QGraphicsPolygonItem>
+#include <QGraphicsItem>
+#include <QGraphicsRectItem>
 #include <QBrush>
 #include <QColor>
 #include <QPainter>
@@ -41,6 +42,9 @@ public:
   int type();
 
 protected:
+  void paint(QPainter *painter, QStyleOptionGraphicsItem *option,
+             QWidget *widget);
+
   void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
 
 private:
