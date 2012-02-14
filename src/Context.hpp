@@ -14,7 +14,7 @@ class Context : public QGraphicsScene
   Q_OBJECT
 
 public:
-  enum Mode { INSERT_NODE, INSERT_SOURCE, INSERT_SINK, INSERT_EDGE, MOVE_ITEM };
+  enum Mode { INSERT_NODE, INSERT_SOURCE, INSERT_SINK, INSERT_EDGE, MOVE_NODE };
   Context();
   ~Context();
 

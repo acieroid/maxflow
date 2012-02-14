@@ -9,6 +9,15 @@ Edge::Edge()
   setCost(0);
 }
 
+Edge::Edge(Node *src, Node *dest)
+{
+  setSource(src);
+  setDestination(dest);
+  setMaxCapacity(0);
+  setCapacity(0);
+  setCost(0);
+}
+
 Node* Edge::getSource()
 {
   return _source;

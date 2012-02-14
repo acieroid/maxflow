@@ -10,7 +10,8 @@ Graph::~Graph()
   Node *node;
 
   while (_nodes.begin() != _nodes.end()) {
-    node = _nodes.pop_back();
+    node = _nodes.back();
+    _nodes.pop_back();
     delete node;
   }
 }
@@ -31,7 +32,7 @@ std::vector<Node*> Graph::getSources()
   std::vector<Node *>::iterator it;
 
   for (it = _nodes.begin(); it != _nodes.end(); it++) {
-    if ((*it)->getType = SOURCE)
+    if ((*it)->getType() == Node::SOURCE)
       sources.push_back(*it);
   }
 
@@ -44,7 +45,7 @@ std::vector<Node*> Graph::getSinks()
   std::vector<Node *>::iterator it;
 
   for (it = _nodes.begin(); it != _nodes.end(); it++) {
-    if ((*it)->getType = SINK)
+    if ((*it)->getType() == Node::SINK)
       sinks.push_back(*it);
   }
 

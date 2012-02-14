@@ -4,7 +4,7 @@ Context::Context() :
   line(NULL)
 {
   setBackgroundBrush(Qt::white);
-  setMode(MOVE_ITEM);
+  setMode(MOVE_NODE);
   graph = new Graph();
 }
 
@@ -48,11 +48,13 @@ void Context::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
   if (mouseEvent->button() != Qt::LeftButton)
     return;
 
-  QGraphicsRectItem *item;
+  Node *node;
   if (mode == INSERT_NODE || mode == INSERT_SOURCE || mode == INSERT_SINK) {
-    item = new Node((Node::NodeType) mode); /* mode correspond à un NodeType dans ce cas-ci */
-    addItem(item);
-    item->setPos(mouseEvent->scenePos());
+    /* mode correspond à un NodeType dans ce cas-ci */
+    node = new Node((Node::NodeType) mode);
+    graph->addNode(node);
+    addItem(node);
+    node->setPos(mouseEvent->scenePos());
   }
   else if (mode == INSERT_EDGE) {
     line = new QGraphicsLineItem(QLineF(mouseEvent->scenePos(),
@@ -66,7 +68,7 @@ void Context::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
   if (mode == INSERT_EDGE && line)
     line->setLine(QLineF(line->line().p1(), mouseEvent->scenePos()));
-  if (mode == MOVE_ITEM)
+  if (mode == MOVE_NODE)
     QGraphicsScene::mouseMoveEvent(mouseEvent);
 }
 
@@ -85,9 +87,12 @@ void Context::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 
     if (startItems.count() > 0 && endItems.count() > 0 &&
         startItems.first() != endItems.first()) {
-      /* TODO: ajouter l'arc */
+      Node *start = qgraphicsitem_cast<Node *>(startItems.first());
+      Node *end = qgraphicsitem_cast<Node *>(endItems.first());
+      Edge *edge = new Edge(start, end);
+      start->addNext(edge);
     }
   }
-  setMode(MOVE_ITEM);
+  setMode(MOVE_NODE);
   QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }
