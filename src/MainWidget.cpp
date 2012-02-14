@@ -11,6 +11,9 @@ MainWidget::MainWidget()
   context = new Context();
   view = new QGraphicsView(context);
 
+  QObject::connect(newNode, SIGNAL(clicked()), context, SLOT(insertNode()));
+  QObject::connect(newEdge, SIGNAL(clicked()), context, SLOT(insertEdge()));
+
   buttonsLayout->addWidget(restart);
   buttonsLayout->addWidget(step);
   buttonsLayout->addWidget(newNode);
