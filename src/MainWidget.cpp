@@ -36,3 +36,14 @@ MainWidget::~MainWidget()
   delete buttonsLayout;
   delete mainLayout;
 }
+
+void MainWidget::resizeEvent(QResizeEvent * /* event */)
+{
+  if (view->sceneRect().width() > view->size().width() ||
+      view->sceneRect().height() > view->size().height())
+    return;
+
+  context->setSceneRect(QRect(0, 0,
+                              view->size().width(),
+                              view->size().height()));
+}

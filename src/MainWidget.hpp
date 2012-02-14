@@ -19,6 +19,9 @@ public:
   MainWidget();
   ~MainWidget();
 
+protected:
+  void resizeEvent(QResizeEvent *event);
+
 private:
   QVBoxLayout *mainLayout;
   QHBoxLayout *buttonsLayout;

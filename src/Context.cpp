@@ -1,5 +1,4 @@
 #include "Context.hpp"
-#include <iostream>
 
 Context::Context() :
   line(NULL)
