@@ -1,28 +1,11 @@
 #include "Node.hpp"
 
-Node::Node() :
-  QGraphicsRectItem(0, 0, NODE_WIDTH, NODE_HEIGHT)
-{
-  setName(-1);
-  setPotential(0);
-  setType(NODE);
-}
-
 Node::Node(NodeType type) :
-  QGraphicsRectItem(0, 0, NODE_WIDTH, NODE_HEIGHT)
+  QGraphicsRectItem(-NODE_WIDTH/2, -NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT),
+  _name(-1), _potential(0), _type(type)
 {
-  setName(-1);
-  setPotential(0);
-  setType(type);
-}
-
-Node::Node(unsigned int name, unsigned int potential, NodeType type) :
-  QGraphicsRectItem(0, 0, NODE_WIDTH, NODE_HEIGHT)
-{
-  setName(name);
-  setPotential(potential);
-  setType(type);
-  QGraphicsRectItem(0, 0, 100, 20);
+  setFlag(QGraphicsItem::ItemIsMovable, true);
+  setAcceptDrops(true);
 }
 
 unsigned int Node::getName()
@@ -98,4 +81,17 @@ void Node::setType(NodeType type)
 int Node::type()
 {
   return Type;
+}
+
+void Node::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+  /* TODO: idéalement il faudrait utiliser le dragMoveEvent mais ça ne
+     marche pas, même en utilisant setAcceptDrops(true) */
+  std::vector<Edge *>::iterator it;
+
+  /* Mets à jour les arcs */
+  for (it = _next.begin(); it != _next.end(); it++)
+    (*it)->update();
+
+  QGraphicsItem::mouseMoveEvent(event);
 }

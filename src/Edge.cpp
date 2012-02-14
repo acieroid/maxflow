@@ -1,17 +1,8 @@
 #include "Edge.hpp"
 
-Edge::Edge()
+Edge::Edge(Node *src, Node *dest) :
+  _source(src), _dest(dest), _maxCapacity(0), _capacity(0), _cost(0)
 {
-  Edge(NULL, NULL);
-}
-
-Edge::Edge(Node *src, Node *dest)
-{
-  setSource(src);
-  setDestination(dest);
-  setMaxCapacity(0);
-  setCapacity(0);
-  setCost(0);
   setLine(QLineF(src->pos(), dest->pos()));
   setZValue(-1000); /* évite de se dessiner devant les autres objets */
 }
@@ -44,11 +35,13 @@ int Edge::getCost()
 void Edge::setSource(Node* node)
 {
   _source = node;
+  update();
 }
 
 void Edge::setDestination(Node* node)
 {
   _dest = node;
+  update();
 }
 
 void Edge::setMaxCapacity(unsigned int maxCapacity)
@@ -64,6 +57,11 @@ void Edge::setCapacity(unsigned int capacity)
 void Edge::setCost(unsigned int cost)
 {
   _cost = cost;
+}
+
+void Edge::update()
+{
+  setLine(QLineF(_source->pos(), _dest->pos()));
 }
 
 int Edge::type()

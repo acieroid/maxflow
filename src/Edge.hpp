@@ -11,7 +11,6 @@ class Edge : public QGraphicsLineItem
 public:
   enum { Type = UserType + 2 };
 
-  Edge();
   Edge(Node *src, Node *dest);
 		
   Node* getSource();
@@ -25,6 +24,12 @@ public:
   void setMaxCapacity(unsigned int maxCapacity);
   void setCapacity(unsigned int capacity);
   void setCost(unsigned int cost);
+
+  /**
+   * Permet de regénérer la flèche, si la source ou la destination a
+   * été déplacée par exemple
+   */
+  void update();
 
   int type();
 private:

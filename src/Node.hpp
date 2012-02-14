@@ -4,6 +4,7 @@
 #include <QGraphicsPolygonItem>
 #include <QBrush>
 #include <QColor>
+#include <QPainter>
 #include <vector>
 
 #include "Edge.hpp"
@@ -21,9 +22,7 @@ public:
   enum { Type = UserType + 1 };
   enum NodeType { NODE, SOURCE, SINK };
 
-  Node();
   Node(NodeType type);
-  Node(unsigned int name, unsigned int potential, NodeType type);
 		
   unsigned int getName();
   void setName(unsigned int name);
@@ -39,6 +38,10 @@ public:
   void setType(NodeType type);
 
   int type();
+
+protected:
+  void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+
 private:
   unsigned int _name;
   unsigned int _potential;
