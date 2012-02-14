@@ -29,7 +29,8 @@ public:
   unsigned int getPotential();
   void setPotential(unsigned int potential);
 		
-  void addNext(Edge* edge);
+  void addNext(Edge *edge);
+  void addPrev(Edge *edge);
   Edge* getEdge(unsigned int i);
   Edge* getEdgeFromNode(unsigned int name);
   int nextSize();
@@ -46,7 +47,8 @@ private:
   unsigned int _name;
   unsigned int _potential;
   NodeType _type;
-  std::vector<Edge*> _next;
+  std::vector<Edge *> _next;
+  std::vector<Edge *> _prev;
 };
 
 #endif

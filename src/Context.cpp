@@ -92,6 +92,7 @@ void Context::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
       Node *end = (Node *)(endItems.first());
       Edge *edge = new Edge(start, end);
       start->addNext(edge);
+      end->addPrev(edge);
       addItem(edge);
     }
   }

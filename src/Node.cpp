@@ -33,6 +33,11 @@ void Node::addNext(Edge* edge)
   _next.push_back(edge);
 }
 
+void Node::addPrev(Edge *edge)
+{
+  _prev.push_back(edge);
+}
+
 Edge* Node::getEdge(unsigned int i)
 {//acces au noeud suivant i
   if(i < _next.size())
@@ -91,6 +96,9 @@ void Node::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
   /* Mets à jour les arcs */
   for (it = _next.begin(); it != _next.end(); it++)
+    (*it)->update();
+
+  for (it = _prev.begin(); it != _prev.end(); it++)
     (*it)->update();
 
   QGraphicsItem::mouseMoveEvent(event);
