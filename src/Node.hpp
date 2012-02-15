@@ -1,13 +1,20 @@
 #ifndef _NODE_HPP
 #define _NODE_HPP
 
+#include <QWidget>
 #include <QGraphicsItem>
 #include <QGraphicsRectItem>
 #include <QBrush>
 #include <QColor>
 #include <QPainter>
+#include <QDialog>
+#include <QGridLayout>
+#include <QSpinBox>
+#include <QLabel>
 #include <vector>
 
+#include "NodeDialog.hpp"
+class NodeDialog;
 #include "Edge.hpp"
 class Edge;
 
@@ -17,7 +24,7 @@ static const QColor SINK_COLOR = Qt::red;
 static const int NODE_WIDTH = 100;
 static const int NODE_HEIGHT = 25;
 
-class Node : public QGraphicsRectItem
+class Node : public QGraphicsRectItem, public QObject
 {
 public:
   enum { Type = UserType + 1 };
@@ -26,7 +33,7 @@ public:
   Node(NodeType type);
 		
   unsigned int getName();
-  void setName(unsigned int name);
+  void setName(int name);
   unsigned int getPotential();
   void setPotential(unsigned int potential);
 		
@@ -45,6 +52,7 @@ protected:
   void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
              QWidget *widget);
   QVariant itemChange(GraphicsItemChange change, const QVariant &value);
+  void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
 
 private:
   unsigned int _name;

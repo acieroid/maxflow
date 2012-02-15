@@ -21,9 +21,6 @@ public:
 		
   void setSource(Node* node);
   void setDestination(Node* node);
-  void setMaxCapacity(unsigned int maxCapacity);
-  void setCapacity(unsigned int capacity);
-  void setCost(unsigned int cost);
 
   /**
    * Permet de regénérer la flèche, si la source ou la destination a
@@ -33,8 +30,12 @@ public:
 
   QRectF boundingRect() const;
   QPainterPath shape() const;
-
   int type();
+
+public slots:
+  void setMaxCapacity(unsigned int maxCapacity);
+  void setCapacity(unsigned int capacity);
+  void setCost(unsigned int cost);
 
 protected:
   void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,

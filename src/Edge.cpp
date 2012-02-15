@@ -65,7 +65,6 @@ void Edge::update()
   setLine(QLineF(_source->pos(), _dest->pos()));
 }
 
-
 QRectF Edge::boundingRect() const
 {
   double extra = 50;

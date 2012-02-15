@@ -22,7 +22,7 @@ unsigned int Node::getPotential()
   return _potential;
 }
 
-void Node::setName(unsigned int name)
+void Node::setName(int name)
 {
   _name = name;
 }
@@ -120,4 +120,12 @@ void Node::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
   QString name = QString("%1").arg(getName());
   painter->drawText(-fontMetrics.width(name)/2,
                     fontMetrics.width(name)/2, name);
+}
+
+
+void Node::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+  NodeDialog *dialog = new NodeDialog(this);
+  /* TODO: détruire le dialogue quand il n'est plus utilisé (si ça ne
+     se fait pas automatiquement par Qt) */
 }
