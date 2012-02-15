@@ -42,10 +42,9 @@ public:
   int type();
 
 protected:
-  void paint(QPainter *painter, QStyleOptionGraphicsItem *option,
+  void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
              QWidget *widget);
-
-  void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+  QVariant itemChange(GraphicsItemChange change, const QVariant &value);
 
 private:
   unsigned int _name;
