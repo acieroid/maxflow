@@ -31,8 +31,8 @@ public:
    */
   void update();
 
-  QRectF boundingRect();
-  QPainterPath shape();
+  QRectF boundingRect() const;
+  QPainterPath shape() const;
 
   int type();
 

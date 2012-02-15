@@ -5,7 +5,7 @@ Edge::Edge(Node *src, Node *dest) :
 {
   setLine(QLineF(src->pos(), dest->pos()));
   setZValue(-1000); /* évite de se dessiner devant les autres objets */
-  setFlag(QGraphicsItem::ItemIsMovable, true);
+  setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
 Node* Edge::getSource()
@@ -65,16 +65,16 @@ void Edge::update()
   setLine(QLineF(_source->pos(), _dest->pos()));
 }
 
-QRectF Edge::boundingRect()
+
+QRectF Edge::boundingRect() const
 {
-  /* TODO: quelques artéfact quand on déplace un arc */
-  double extra = 10;
+  double extra = 50;
   return QRectF(line().p1(), QSizeF(line().p2().x() - line().p1().x(),
                                     line().p2().y() - line().p1().y()))
     .normalized().adjusted(-extra, -extra, extra, extra);
 }
 
-QPainterPath Edge::shape()
+QPainterPath Edge::shape() const
 {
   /* TODO: ajouter la flèche au bout */
   return QGraphicsLineItem::shape();

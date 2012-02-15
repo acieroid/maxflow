@@ -7,6 +7,7 @@ Node::Node(NodeType type) :
   setType(type);
   setPotential(0);
   setFlag(QGraphicsItem::ItemIsMovable, true);
+  setFlag(QGraphicsItem::ItemIsSelectable, true);
   setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
   setAcceptDrops(true);
 }
