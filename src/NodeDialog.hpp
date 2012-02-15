@@ -5,6 +5,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QSpinBox>
+#include <QComboBox>
 
 #include "Node.hpp"
 class Node;
@@ -22,13 +23,16 @@ public:
 
 public slots:
   void setNodeName(int name);
+  void setNodeType(int type);
 
 private:
   Node *node;
+
   QDialog *dialog;
   QGridLayout *layout;
-  QLabel *nameLabel;
+  QLabel *nameLabel, *typeLabel;
   QSpinBox *name;
+  QComboBox *typeBox;
 };
 
 #endif /* NODE_DIALOG_HPP */
