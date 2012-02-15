@@ -31,7 +31,14 @@ public:
    */
   void update();
 
+  QRectF boundingRect();
+  QPainterPath shape();
+
   int type();
+
+protected:
+  void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+             QWidget *widget);
 private:
   Node* _source;
   Node* _dest;

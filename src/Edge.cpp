@@ -5,6 +5,7 @@ Edge::Edge(Node *src, Node *dest) :
 {
   setLine(QLineF(src->pos(), dest->pos()));
   setZValue(-1000); /* évite de se dessiner devant les autres objets */
+  setFlag(QGraphicsItem::ItemIsMovable, true);
 }
 
 Node* Edge::getSource()
@@ -62,6 +63,31 @@ void Edge::setCost(unsigned int cost)
 void Edge::update()
 {
   setLine(QLineF(_source->pos(), _dest->pos()));
+}
+
+QRectF Edge::boundingRect()
+{
+  /* TODO: quelques artéfact quand on déplace un arc */
+  double extra = 10;
+  return QRectF(line().p1(), QSizeF(line().p2().x() - line().p1().x(),
+                                    line().p2().y() - line().p1().y()))
+    .normalized().adjusted(-extra, -extra, extra, extra);
+}
+
+QPainterPath Edge::shape()
+{
+  /* TODO: ajouter la flèche au bout */
+  return QGraphicsLineItem::shape();
+}
+
+void Edge::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+                 QWidget *widget)
+{
+  QGraphicsLineItem::paint(painter, option, widget);
+  QString infos = QString("%1/%2/%3")
+    .arg(getCost()).arg(getCapacity()).arg(getMaxCapacity());
+  painter->drawText((line().p2().x() + line().p1().x())/2,
+                    (line().p2().y() + line().p1().y())/2, infos);
 }
 
 int Edge::type()
